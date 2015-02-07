@@ -1,6 +1,10 @@
 minetest.register_alias("darkage:sandstone_cobble","default:sandstonebrick")
 minetest.register_alias("darkage:desert_stone_cobble","default:desert_stonebrick")
 
+minetest.register_alias("darkage:stair_basalt_cobble_wall","darkage:stair_basalt_cobble")
+minetest.register_alias("darkage:slab_basalt_cobble_inverted","darkage:slab_basalt_cobble")
+minetest.register_alias("darkage:panel_basalt_cobble_top","darkage:panel_basalt_cobble")
+minetest.register_alias("darkage:stair_straw_inverted","darkage:stair_straw")
 
 minetest.register_alias("darkage:stair_desert_stone_cobble_wall_half","default:stair_desert_stonebrick_wall_half")
 minetest.register_alias("darkage:slab_desert_stone_cobble_inverted","default:slab_desert_stonebrick_inverted")
@@ -60,6 +64,8 @@ minetest.register_alias("darkage:slab_sandstone_cobble_three_quarter_inverted","
 --Add aliases when slate_tale was renamed to slate_tile
 --minetest.register_alias(oldname,newname)
 minetest.register_alias("darkage:slate_tale","darkage:slate_tile")
+--slab
+minetest.register_alias("darkage:slab_slate_tale","darkage:slab_slate_tile")
 minetest.register_alias("darkage:slab_slate_tale_inverted","darkage:slab_slate_tile_inverted")
 minetest.register_alias("darkage:slab_slate_tale_wall","darkage:slab_slate_tile_wall")
 minetest.register_alias("darkage:slab_slate_tale_quarter","darkage:slab_slate_tile_quarter")
@@ -68,6 +74,8 @@ minetest.register_alias("darkage:slab_slate_tale_quarter_wall","darkage:slab_sla
 minetest.register_alias("darkage:slab_slate_tale_three_quarter","darkage:slab_slate_tile_three_quarter")
 minetest.register_alias("darkage:slab_slate_tale_three_quarter_inverted","darkage:slab_slate_tile_three_quarter_inverted")
 minetest.register_alias("darkage:slab_slate_tale_three_quarter_wall","darkage:slab_slate_tile_three_quarter_wall")
+--stair
+minetest.register_alias("darkage:stair_slate_tale","darkage:stair_slate_tile")
 minetest.register_alias("darkage:stair_slate_tale_inverted","darkage:stair_slate_tile_inverted")
 minetest.register_alias("darkage:stair_slate_tale_wall","darkage:stair_slate_tile_wall")
 minetest.register_alias("darkage:stair_slate_tale_wall_half","darkage:stair_slate_tile_wall_half")
@@ -82,6 +90,8 @@ minetest.register_alias("darkage:stair_slate_tale_inner","darkage:stair_slate_ti
 minetest.register_alias("darkage:stair_slate_tale_inner_inverted","darkage:stair_slate_tile_inner_inverted")
 minetest.register_alias("darkage:stair_slate_tale_outer","darkage:stair_slate_tile_outer")
 minetest.register_alias("darkage:stair_slate_tale_outer_inverted","darkage:stair_slate_tile_outer_inverted")
+--panel
+minetest.register_alias("darkage:panel_slate_tale","darkage:panel_slate_tile")
 minetest.register_alias("darkage:panel_slate_tale_bottom","darkage:panel_slate_tile_bottom")
 minetest.register_alias("darkage:panel_slate_tale_top","darkage:panel_slate_tile_top")
 minetest.register_alias("darkage:panel_slate_tale_vertical","darkage:panel_slate_tile_vertical")

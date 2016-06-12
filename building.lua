@@ -87,7 +87,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_node("darkage:chalk_bars", {
+minetest.register_node("darkage:reinforced_chalk_bars", {
 	description = "Chalk Bars",
 	tiles = {"darkage_chalk.png^darkage_bars.png"},
 	groups = {cracky=3},
@@ -95,7 +95,7 @@ minetest.register_node("darkage:chalk_bars", {
 })
 
 minetest.register_craft({
-	output = 'darkage:chalk_bars 4',
+	output = 'darkage:reinforced_chalk_bars 4',
 	recipe = {
 		{'group:stick', 'darkage:chalk_powder', 'group:stick'},
 		{'group:stick', 'darkage:chalk_powder', 'group:stick'},
@@ -143,7 +143,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_node("darkage:wood_bars", {
+minetest.register_node("darkage:reinforced_wood_bars", {
 	description = "Wooden Bars",
 	tiles = {"default_wood.png^darkage_bars.png"},
 	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=3,wood=1},
@@ -151,7 +151,7 @@ minetest.register_node("darkage:wood_bars", {
 })
 
 minetest.register_craft({
-	output = 'darkage:wood_bars 4',
+	output = 'darkage:reinforced_wood_bars 4',
 	recipe = {
 		{'group:stick', 'default:wood', 'group:stick'},
 		{'group:stick', 'default:wood', 'group:stick'},

@@ -5,7 +5,6 @@ minetest.register_node("darkage:glass", {
 	inventory_image = minetest.inventorycube("darkage_glass.png"),
 	paramtype = "light",
 	sunlight_propagates = true,
-	is_ground_content = true,
 	groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
 	sounds = default.node_sound_glass_defaults(),
 })
@@ -18,7 +17,6 @@ minetest.register_node("darkage:glow_glass", {
 	paramtype = "light",
 	light_source = 18,
 	sunlight_propagates = true,
-	is_ground_content = true,
 	groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
 	sounds = default.node_sound_glass_defaults(),
 })
@@ -52,42 +50,139 @@ minetest.register_craft({
 minetest.register_node("darkage:reinforced_chalk", {
   description = "Reinforced Chalk",
 	tiles = {"darkage_chalk.png^darkage_reinforce.png"},
-	is_ground_content = true,
 	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node("darkage:reinforced_chalk_right", {
+  description = "Reinforced Chalk",
+	tiles = {"darkage_chalk.png^darkage_reinforce_right.png"},
+	groups = {cracky=3},
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node("darkage:reinforced_chalk_left", {
+  description = "Reinforced Chalk",
+	tiles = {"darkage_chalk.png^darkage_reinforce_left.png"},
+	groups = {cracky=3},
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node("darkage:reinforced_chalk_arrow", {
+	description = "Reinforced Chalk Arrow \nHint: use the screwdriver to rotate.",
+	tiles = {"darkage_chalk.png" , "darkage_chalk.png" , --top ,down
+		"darkage_chalk.png^(darkage_reinforce_arrow.png^[transformR90)" , "darkage_chalk.png^(darkage_reinforce_arrow.png^[transformR270)" , --right, left
+		"darkage_chalk.png^(darkage_reinforce_arrow.png^[transformR180)" , "darkage_chalk.png^darkage_reinforce_arrow.png"}, -- front, back
+	paramtype2 = "facedir",
+	groups = {cracky=3},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_craft({
+	output = 'darkage:reinforced_chalk_arrow 4',
+	recipe = {
+		{'darkage:chalk_powder', 'group:stick', 'darkage:chalk_powder'},
+		{'group:stick', 'darkage:chalk_powder', 'group:stick'},
+		{'group:stick', 'darkage:chalk_powder', 'group:stick'},
+	}
+})
+
+minetest.register_node("darkage:chalk_bars", {
+	description = "Chalk Bars",
+	tiles = {"darkage_chalk.png^darkage_bars.png"},
+	groups = {cracky=3},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_craft({
+	output = 'darkage:chalk_bars 4',
+	recipe = {
+		{'group:stick', 'darkage:chalk_powder', 'group:stick'},
+		{'group:stick', 'darkage:chalk_powder', 'group:stick'},
+		{'group:stick', 'darkage:chalk_powder', 'group:stick'},
+	}
 })
 
 minetest.register_node("darkage:reinforced_wood", {
   description = "Reinforced Wood",
 	tiles = {"default_wood.png^darkage_reinforce.png"},
-	is_ground_content = true,
 	groups = {snappy=2,choppy=3,oddly_breakable_by_hand=3,flammable=3},
 	sounds = default.node_sound_wood_defaults()
 })
 
 minetest.register_node("darkage:reinforced_wood_right", {
   description = "Reinforced Wood Right",
-	tiles = {"darkage_reinforced_wood_right.png"},
-	is_ground_content = true,
+	tiles = {"default_wood.png^darkage_reinforce_right.png"},
 	groups = {snappy=2,choppy=3,oddly_breakable_by_hand=3,flammable=3},
 	sounds = default.node_sound_wood_defaults()
 })
 
 minetest.register_node("darkage:reinforced_wood_left", {
   description = "Reinforced Wood Left",
-	tiles = {"darkage_reinforced_wood_left.png"},
-	is_ground_content = true,
+	tiles = {"default_wood.png^darkage_reinforce_left.png"},
 	groups = {snappy=2,choppy=3,oddly_breakable_by_hand=3,flammable=3},
 	sounds = default.node_sound_wood_defaults()
 })
 
+minetest.register_node("darkage:reinforced_wood_arrow", {
+	description = "Reinforced Wood Arrow \nHint: use the screwdriver to rotate.",
+	tiles = {"default_wood.png" , "default_wood.png" , --top ,down
+		"default_wood.png^(darkage_reinforce_arrow.png^[transformR90)" , "default_wood.png^(darkage_reinforce_arrow.png^[transformR270)" , --right, left
+		"default_wood.png^(darkage_reinforce_arrow.png^[transformR180)" , "default_wood.png^darkage_reinforce_arrow.png"}, -- front, back
+	paramtype2 = "facedir",
+	groups = {snappy=2,choppy=3,oddly_breakable_by_hand=3,flammable=3},
+	sounds = default.node_sound_wood_defaults(),
+})
+
+minetest.register_craft({
+	output = 'darkage:reinforced_wood_arrow 4',
+	recipe = {
+		{'default:wood', 'group:stick', 'default:wood'},
+		{'group:stick', 'default:wood', 'group:stick'},
+		{'group:stick', 'default:wood', 'group:stick'},
+	}
+})
+
+minetest.register_node("darkage:wood_bars", {
+	description = "Wooden Bars",
+	tiles = {"default_wood.png^darkage_bars.png"},
+	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=3,wood=1},
+	sounds = default.node_sound_wood_defaults(),
+})
+
+minetest.register_craft({
+	output = 'darkage:wood_bars 4',
+	recipe = {
+		{'group:stick', 'default:wood', 'group:stick'},
+		{'group:stick', 'default:wood', 'group:stick'},
+		{'group:stick', 'default:wood', 'group:stick'},
+	}
+})
 
 minetest.register_craft({
 	output = 'darkage:reinforced_chalk',
 	recipe = {
-    {'default:stick','','default:stick'},
+    {'group:stick','','group:stick'},
     {'','darkage:chalk',''},
-    {'default:stick','','default:stick'},
+    {'group:stick','','group:stick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'darkage:reinforced_chalk_right',
+	recipe = {
+    {'','','group:stick'},
+    {'','darkage:chalk',''},
+    {'group:stick','',''},
+	}
+})
+
+minetest.register_craft({
+	output = 'darkage:reinforced_chalk_left',
+	recipe = {
+    {'group:stick','',''},
+    {'','darkage:chalk',''},
+    {'','','group:stick'},
 	}
 })
 
@@ -103,9 +198,9 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'darkage:reinforced_wood',
 	recipe = {
-    {'default:stick','','default:stick'},
+    {'group:stick','','group:stick'},
     {'','default:wood',''},
-    {'default:stick','','default:stick'},
+    {'group:stick','','group:stick'},
 	}
 })
 
@@ -119,9 +214,9 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'darkage:reinforced_wood_left',
 	recipe = {
-    {'default:stick','',''},
+    {'group:stick','',''},
     {'','default:wood',''},
-    {'','','default:stick'},
+    {'','','group:stick'},
 	}
 })
 
@@ -135,9 +230,9 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'darkage:reinforced_wood_right',
 	recipe = {
-    {'','','default:stick'},
+    {'','','group:stick'},
     {'','default:wood',''},
-    {'default:stick','',''},
+    {'group:stick','',''},
 	}
 })
 

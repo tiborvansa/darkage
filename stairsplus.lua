@@ -39,9 +39,9 @@ sounds = default.node_sound_stone_defaults(),
 })
 
 --straw
-stairsplus:register_all("darkage", "straw", "darkage:straw", {
+stairsplus:register_all("darkage", "straw", "farming:straw", {
 description = "Straw",
-tiles = {"darkage_straw.png"},
+tiles = {"farming_straw.png"},
 groups = {snappy=3, flammable=2},
 sounds = default.node_sound_leaves_defaults(),
 })

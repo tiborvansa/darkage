@@ -49,7 +49,7 @@ minetest.register_craft({
 	output = 'darkage:adobe 4',
 	recipe = {
     {'default:sand','default:sand'},
-		{'default:clay_lump','darkage:straw'},
+		{'default:clay_lump','farming:straw'},
 	}
 })
 
@@ -143,40 +143,12 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	output = 'darkage:straw 2',
-	recipe = {
-    {'default:dry_shrub','default:dry_shrub'},
-		{'default:dry_shrub','default:dry_shrub'},
-	}
-})
-
-minetest.register_craft({
-	output = 'darkage:straw 2',
-	recipe = {
-    {'darkage:dry_leaves','darkage:dry_leaves'},
-		{'darkage:dry_leaves','darkage:dry_leaves'},
-	}
-})
-
-if minetest.get_modpath("farming") then
---only if farming installed
-minetest.register_craft({
-	output = 'darkage:straw 4',
-	recipe = {
-    {'farming:wheat_harvested','farming:wheat_harvested'},
-	{'farming:wheat_harvested','farming:wheat_harvested'},
-	}
-})
-else
---nothing else
-end
 
 minetest.register_craft({
 	output = 'darkage:straw_bale',
 	recipe = {
-    {'darkage:straw','darkage:straw'},
-    {'darkage:straw','darkage:straw'},
+    {'farming:straw','farming:straw'},
+    {'farming:straw','farming:straw'},
 	}
 })
 

@@ -198,13 +198,8 @@ minetest.register_node("darkage:slate_tile", {
 	sounds = default.node_sound_stone_defaults()
 })
 
-minetest.register_node("darkage:straw", {
-	description = "Straw",
-	tiles = {"darkage_straw.png"},
-	is_ground_content = true,
-	groups = {snappy=3, flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
-})
+-- Removed straw, because its in minetst game. Registering alias for compatibility reasons
+minetest.register_alias("darkage:straw", "farming:straw")
 
 minetest.register_node("darkage:stone_brick", {
 	description = "Stone Brick",
@@ -218,7 +213,7 @@ minetest.register_node("darkage:straw_bale", {
 	description = "Straw Bale",
 	tiles = {"darkage_straw_bale.png"},
 	is_ground_content = true,
-	drop = 'darkage:straw 4',
+	drop = 'farming:straw 4',
 	groups = {snappy=2, flammable=2},
 	sounds = default.node_sound_leaves_defaults(),
 })

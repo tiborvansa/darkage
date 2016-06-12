@@ -189,9 +189,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'darkage:chalk',
 	recipe = {
-    {'darkage:chalk_powder','darkage:chalk_powder',''},
-    {'darkage:chalk_powder','darkage:chalk_powder',''},
-    {'','',''},
+    {'darkage:chalk_powder','darkage:chalk_powder'},
+	{'darkage:chalk_powder','darkage:chalk_powder'},
 	}
 })
 

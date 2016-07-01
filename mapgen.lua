@@ -1,24 +1,19 @@
 --Makes a stratus of rocks
 --name of the rock to generate
---wherein kind of node to replace, for example default:stone
+--c_wherein id of node to replace, for example minetest.get_content_id("default:stone")
 --minp, maxp the corners of the map to be generated
 --seed random seed
 --stratus_chance inverse probability in a given radius 1:2, 1:3 etc
 --radius horizontal radius of the stratus
 --radius_y vertical radius of the stratus
 --deep how deep can be from the ground
-local function generate_stratus(data, area, name, wherein, ceilin, minp, maxp, seed, stratus_chance, radius, radius_y, deep, y_min, y_max)
-if maxp.y < y_min
-	or minp.y > y_max then
+local function generate_stratus(data, area, name, c_wherein, ca_ceilin, minp, maxp, seed, stratus_chance, radius, radius_y, deep, y_min, y_max)
+	if maxp.y < y_min
+	   or minp.y > y_max then
 		return
 	end
 
-	name = minetest.get_content_id(name)
-	wherein = minetest.get_content_id(wherein[1])
-	ceilin = table.copy(ceilin)
-	for n,i in pairs(ceilin) do
-		ceilin[n] = minetest.get_content_id(i)
-	end
+	local c_node = minetest.get_content_id(name)
 
 	-- it will be only generate a stratus for every 100 m of area
 	local stratus_per_volume=1
@@ -28,11 +23,12 @@ if maxp.y < y_min
 	local volume = ((maxp.x-minp.x+1)/area_size)*((y_max-y_min+1)/area_size)*((maxp.z-minp.z+1)/area_size)
 	local pr = PseudoRandom(seed)
 	local blocks = math.floor(stratus_per_volume*volume)
-	minetest.log("info", "	<<"..dump(name)..">>");
+	minetest.log("info", "	<<"..name..">>");
 	if blocks == 0 then
 		blocks = 1
 	end
-	minetest.log("info", "	blocks: "..dump(blocks).." in vol: "..dump(volume).." ("..dump(maxp.x-minp.x+1)..","..dump(y_max-y_min+1)..","..dump(maxp.z-minp.z+1)..")")
+	minetest.log("info", string.format("	blocks: %d in vol: %d (%d,%d,%d)", 
+									   blocks, volume, maxp.x-minp.x+1, y_max-y_min+1, maxp.z-minp.z+1))
 	for i = 1,blocks do
 		if pr:next(1,stratus_chance) == 1 then
 			-- TODO deep
@@ -58,7 +54,7 @@ if maxp.y < y_min
 			local i = 0
 			--print("	upper node "..n)
 			local x
-			for _,v in ipairs(ceilin) do
+			for _,v in ipairs(ca_ceilin) do
 				if n == v then
 					x = true
 					break
@@ -68,7 +64,7 @@ if maxp.y < y_min
 				-- search for the node to replace
 				--print("	Searching nodes to replace from "..dump(y0-1).." to "..dump(y_min))
 				for y1 = y0-1,y_min,-1 do
-					if data[area:index(x0, y1, z0)] == wherein then
+					if data[area:index(x0, y1, z0)] == c_wherein then
 						y0 = y1-deep
 						if y0 < y_min then
 							y0 = y_min
@@ -89,8 +85,8 @@ if maxp.y < y_min
 						local ry0 = ry + pr:next(1,3)
 						for y1 = pr:next(1,3),ry0 do
 							local p2 = area:index(x0+x1, y0+y1, z0+z1)
-							if data[p2] == wherein then
-								data[p2] = name
+							if data[p2] == c_wherein then
+								data[p2] = c_node
 								i = i +1
 							end
 						end
@@ -104,17 +100,17 @@ if maxp.y < y_min
 end
 
 local function generate_claylike(data, varea, name, minp, maxp, seed, chance, minh, maxh, dirt)
-	local c_ore = minetest.get_content_id(name)
-	local c_sand = minetest.get_content_id("default:sand")
-	local c_dirt = minetest.get_content_id("default:dirt")
-	local c_lawn = minetest.get_content_id("default:dirt_with_grass")
-	local c_water = minetest.get_content_id("default:water_source")
-	local c_air = minetest.get_content_id("air")
-
 	if maxp.y >= maxh+1 and minp.y <= minh-1 then
-	local pr = PseudoRandom(seed)
-	local divlen = 4
-	local divs = (maxp.x-minp.x)/divlen+1;
+		local c_ore = minetest.get_content_id(name)
+		local c_sand = minetest.get_content_id("default:sand")
+		local c_dirt = minetest.get_content_id("default:dirt")
+		local c_lawn = minetest.get_content_id("default:dirt_with_grass")
+		local c_water = minetest.get_content_id("default:water_source")
+		local c_air = minetest.get_content_id("air")
+
+		local pr = PseudoRandom(seed)
+		local divlen = 4
+		local divs = (maxp.x-minp.x)/divlen+1;
 		for yy=minh,maxh do
 			local x = pr:next(1,chance)
 			if x == 1 then
@@ -201,48 +197,53 @@ local function generate_strati(minp, maxp, seed)
 	local area = VoxelArea:new({MinEdge = emin, MaxEdge = emax})
 	local data = vm:get_data()
 
+	local c_air = minetest.get_content_id("air")
+	local c_stone = minetest.get_content_id("default:stone")
+	local c_water = minetest.get_content_id("default:water_source")
+
+
 	generate_claylike(data, area, "darkage:mud", minp, maxp, seed+1, 4, 0, 2, 0)
 	generate_claylike(data, area, "darkage:silt", minp, maxp, seed+2, 4, -1, 1, 1)
 
 	-- TODO: Maybe realize the following stuff with register ore. somehow.
 	generate_stratus(data, area, "darkage:ors", 
-					{"default:stone"},
-					{"default:stone","air","default:water_source"},
+					c_stone,
+					{c_stone, c_air, c_water},
 					minp, maxp, seed+4, 4, 25, 7, 50, -200,  500)
 
 	generate_stratus(data, area, "darkage:shale",
-					{"default:stone"}, 
-					{"default:stone","air"},
+					c_stone, 
+					{c_stone, c_air},
 					minp, maxp, seed+5, 4, 23, 7, 50, -50,  20)
 
 	generate_stratus(data, area, "darkage:slate", 
-					{"default:stone"}, 
-					{"default:stone","air"},
+					c_stone, 
+					{c_stone, c_air},
 					minp, maxp, seed+6, 6, 23, 5, 50, -500, 0)
 
 	generate_stratus(data, area, "darkage:schist", 
-					{"default:stone"}, 
-					{"default:stone","air"},
+					c_stone, 
+					{c_stone, c_air},
 					minp, maxp, seed+7, 6, 19, 6, 50, -31000, -10)
 
 	generate_stratus(data, area, "darkage:basalt", 
-					{"default:stone"}, 
-					{"default:stone","air"}, 
+					c_stone, 
+					{c_stone, c_air}, 
 					minp, maxp, seed+8, 5, 20, 5, 20, -31000, -50)
 
 	generate_stratus(data, area, "darkage:marble", 
-					{"default:stone"},
-					{"default:stone","air"},
+					c_stone,
+					{c_stone, c_air},
 					minp, maxp, seed+9, 4, 25, 6, 50, -31000,  -75)
 
 	generate_stratus(data, area, "darkage:serpentine", 
-					{"default:stone"},
-					{"default:stone","air"},
+					c_stone,
+					{c_stone, c_air},
 					minp, maxp, seed+10, 4, 28, 8, 50, -31000,  -350)
 
 	generate_stratus(data, area, "darkage:gneiss", 
-					{"default:stone"}, 
-					{"default:stone","air"},
+					c_stone, 
+					{c_stone, c_air},
 					minp, maxp, seed+11, 4, 15, 5, 50, -31000, -250)
 
 	vm:set_data(data)

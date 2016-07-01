@@ -19,11 +19,11 @@ local function generate_stratus(name, wherein, ceilin, ceil, minp, maxp, seed, s
 	local volume = ((maxp.x-minp.x+1)/area)*((y_max-y_min+1)/area)*((maxp.z-minp.z+1)/area)
 	local pr = PseudoRandom(seed)
 	local blocks = math.floor(stratus_per_volume*volume)
-	print("  <<"..dump(name)..">>");
+	minetest.log("info","  <<"..dump(name)..">>");
 	if blocks == 0 then
 		blocks = 1
 	end
-	print("    blocks: "..dump(blocks).." in vol: "..dump(volume).." ("..dump(maxp.x-minp.x+1)..","..dump(y_max-y_min+1)..","..dump(maxp.z-minp.z+1)..")")
+	minetest.log("info","    blocks: "..dump(blocks).." in vol: "..dump(volume).." ("..dump(maxp.x-minp.x+1)..","..dump(y_max-y_min+1)..","..dump(maxp.z-minp.z+1)..")")
 	for i=1,blocks do
 		local x = pr:next(1,stratus_chance)
 		if x == 1 then
@@ -49,7 +49,7 @@ local function generate_stratus(name, wherein, ceilin, ceil, minp, maxp, seed, s
 			local p0 = {x=x0, y=y0, z=z0}
 			local n = minetest.env:get_node(p0).name
 			local i = 0
-			--print("    upper node "..n)
+			--minetest.log("info","    upper node "..n)
 			x = 0
 			for k, v in ipairs(ceilin) do
 				if n == v then
@@ -59,7 +59,7 @@ local function generate_stratus(name, wherein, ceilin, ceil, minp, maxp, seed, s
 			end
 			if x == 1 then
 				-- search for the node to replace
-				--print("    Searching nodes to replace from "..dump(y0-1).." to "..dump(y_min))
+				--minetest.log("info","    Searching nodes to replace from "..dump(y0-1).." to "..dump(y_min))
 				for y1=y0-1,y_min,-1 do
 					p0.y=y1
 					n = minetest.env:get_node(p0).name
@@ -81,7 +81,7 @@ local function generate_stratus(name, wherein, ceilin, ceil, minp, maxp, seed, s
 				local rx=pr:next(radius/2,radius)+1
 				local rz=pr:next(radius/2,radius)+1
 				local ry=pr:next(radius_y/2,radius_y)+1
-				--print("    area of generation ("..dump(rx)..","..dump(rz)..","..dump(ry)..")")
+				--minetest.log("info","    area of generation ("..dump(rx)..","..dump(rz)..","..dump(ry)..")")
 				for x1=0,rx do
 					rz = rz + 3 - pr:next(1,6)
 					if rz < 1 then 
@@ -117,19 +117,26 @@ local function generate_stratus(name, wherein, ceilin, ceil, minp, maxp, seed, s
 						end
 					end
 				end
-				print("    generated "..dump(i).." blocks in ("..dump(x0)..","..dump(y0)..","..dump(z0)..")")
+				minetest.log("info","    generated "..dump(i).." blocks in ("..dump(x0)..","..dump(y0)..","..dump(z0)..")")
 			end
 
 		end
 	end
-	--print("generate_ore done")
+	--minetest.log("info","generate_ore done")
 end
 
-local function generate_claylike(name, minp, maxp, seed, chance, minh, maxh, dirt)
+local function generate_claylike(data, varea, name, minp, maxp, seed, chance, minh, maxh, dirt)
+	local c_ore = minetest.get_content_id(name)
+	local c_sand = minetest.get_content_id("default:sand")
+	local c_dirt = minetest.get_content_id("default:dirt")
+	local c_lawn = minetest.get_content_id("default:dirt_with_grass")
+	local c_water = minetest.get_content_id("default:water_source")
+	local c_air = minetest.get_content_id("air")
+
 	if maxp.y >= maxh+1 and minp.y <= minh-1 then
-		local pr = PseudoRandom(seed)
-		local divlen = 4
-		local divs = (maxp.x-minp.x)/divlen+1;
+	local pr = PseudoRandom(seed)
+	local divlen = 4
+	local divs = (maxp.x-minp.x)/divlen+1;
 		for yy=minh,maxh do
 			local x = pr:next(1,chance)
 			if x == 1 then
@@ -137,20 +144,23 @@ local function generate_claylike(name, minp, maxp, seed, chance, minh, maxh, dir
 					for divz=0+1,divs-1-1 do
 						local cx = minp.x + math.floor((divx+0.5)*divlen)
 						local cz = minp.z + math.floor((divz+0.5)*divlen)
-						local up = minetest.env:get_node({x=cx,y=yy,z=cz}).name
-						local down = minetest.env:get_node({x=cx,y=yy-1,z=cz}).name
-						if ( up == "default:water_source" or up == "air" ) and
-							 ( down == "default:sand" or (dirt == 1 and (down == "default:dirt" or down == "default:dirt_with_grass" ))) then
+						local up = data[varea:index(cx,yy,cz)]
+						local down = data[varea:index(cx,yy-1,cz)]
+						if ( up == c_water or up == c_air ) and ( down == c_sand or (dirt == 1 and (down == c_dirt or down == c_lawn ))) then
 							local is_shallow = true
 							local num_water_around = 0
-							if minetest.env:get_node({x=cx-divlen*2,y=yy,z=cz}).name == "default:water_source" then
-								num_water_around = num_water_around + 1 end
-							if minetest.env:get_node({x=cx+divlen*2,y=yy,z=cz}).name == "default:water_source" then
-								num_water_around = num_water_around + 1 end
-							if minetest.env:get_node({x=cx,y=yy,z=cz-divlen*2}).name == "default:water_source" then
-								num_water_around = num_water_around + 1 end
-							if minetest.env:get_node({x=cx,y=yy,z=cz+divlen*2}).name == "default:water_source" then
-								num_water_around = num_water_around + 1 end
+							if data[varea:index(cx-divlen*2,yy,cz)] == c_water then
+								num_water_around = num_water_around + 1
+							end
+							if data[varea:index(cx+divlen*2,yy,cz)] == c_water then
+								num_water_around = num_water_around + 1
+							end
+							if data[varea:index(cx,yy,cz-divlen*2)] == c_water then
+								num_water_around = num_water_around + 1
+							end
+							if data[varea:index(cx,yy,cz+divlen*2)] == c_water then
+								num_water_around = num_water_around + 1
+							end
 							if num_water_around >= 3 then
 								is_shallow = false
 							end	
@@ -158,9 +168,9 @@ local function generate_claylike(name, minp, maxp, seed, chance, minh, maxh, dir
 								for x1=-divlen,divlen do
 									for z1=-divlen,divlen do
 										local p={x=cx+x1,y=yy-1,z=cz+z1}
-										down = minetest.env:get_node(p).name
-										if down == "default:sand" or (dirt == 1 and (down == "default:dirt" or down == "default:dirt_with_grass")) then
-											minetest.env:set_node(p, {name=name})
+										down = data[varea:indexp(p)]
+										if down == c_sand or (dirt == 1 and (down == c_dirt or down == c_lawn)) then
+											data[varea:indexp(p)] = c_ore
 										end
 									end
 								end
@@ -185,15 +195,45 @@ minetest.register_ore({
 	y_max          = 200,
 })
 
+-- Generate chalk inside mountains
+minetest.register_ore({
+	ore_type        	= "sheet",
+	ore             	= "darkage:chalk",
+	wherein         	= {"default:stone"},
+	column_height_max = 30,
+	column_height_min = 20,
+	y_min            = -20,
+	y_max            = 50,
+	noise_threshold = 0.45,
+	noise_params     = {
+		offset = 0.35,
+		scale = 0.2,
+		spread = {x = 30, y = 30, z = 30},
+		octaves = 1,
+		persistence = 0.6
+	},
+})
+
+local function generate_clay(minp, maxp, seed)
+			local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
+			local area = VoxelArea:new({MinEdge = emin, MaxEdge = emax})
+			local data = vm:get_data()
+
+			generate_claylike(data, area, "darkage:mud", minp, maxp, seed+1, 4, 0, 2, 0)
+			generate_claylike(data, area, "darkage:silt", minp, maxp, seed+2, 4, -1, 1, 1)
+
+			vm:set_data(data)
+			vm:write_to_map()
+end
+
+minetest.register_on_generated(generate_clay)
+
+-- TODO: Realize the following stuff with register ore. somehow.
 minetest.register_on_generated(function(minp, maxp, seed)
 	-- Generate stratus
-	print("DARKAGE: Generate stratus");
- 	generate_claylike("darkage:mud", minp, maxp, seed+1, 4, 0, 2, 0)
- 	generate_claylike("darkage:silt", minp, maxp, seed+2, 4, -1, 1, 1)
-	generate_stratus("darkage:chalk", 
-									 {"default:stone"},
-									 {"default:stone","air"}, nil,
-									 minp, maxp, seed+3, 4, 25, 8, 0, -20,  50)
+	local t1 = os.clock()
+	minetest.log("info","DARKAGE: Generate stratus");
+
 	generate_stratus("darkage:ors", 
 									 {"default:stone"},
 									 {"default:stone","air","default:water_source"}, nil,
@@ -226,4 +266,6 @@ minetest.register_on_generated(function(minp, maxp, seed)
 									 {"default:stone"}, 
 									 {"default:stone","air"}, nil,
 									 minp, maxp, seed+11, 4, 15, 5, 50, -31000, -250)
+
+	minetest.log("info", string.format("[darkage] finished after: %.2fs", os.clock() - t1))
 end)

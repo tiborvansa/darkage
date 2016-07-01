@@ -1,4 +1,4 @@
-print (" ---- Dark Age Version 1.3 is Loading! ---- ")
+minetest.log("action"," ---- Dark Age Version 1.3 is Loading! ---- ")
 
 local MODPATH = minetest.get_modpath("darkage")
 

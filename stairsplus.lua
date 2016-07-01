@@ -126,11 +126,3 @@ tiles = {"darkage_ors_cobble.png"},
 groups = {crumbly=2,cracky=2},
 sounds = default.node_sound_stone_defaults(),
 })
-
---Serpentine
-stairsplus:register_all("darkage", "serpentine", "darkage:serpentine", {
-description = "Serpentine",
-tiles = {"darkage_serpentine.png"},
-groups = {crumbly=2,cracky=2},
-sounds = default.node_sound_stone_defaults(),
-})

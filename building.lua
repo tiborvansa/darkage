@@ -89,7 +89,7 @@ minetest.register_craft({
 
 minetest.register_node("darkage:reinforced_chalk_bars", {
 	description = "Chalk Bars",
-	tiles = {"darkage_chalk.png^darkage_bars.png"},
+	tiles = {"darkage_chalk.png^darkage_reinforce_bars.png"},
 	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -145,7 +145,7 @@ minetest.register_craft({
 
 minetest.register_node("darkage:reinforced_wood_bars", {
 	description = "Wooden Bars",
-	tiles = {"default_wood.png^darkage_bars.png"},
+	tiles = {"default_wood.png^darkage_reinforce_bars.png"},
 	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=3,wood=1},
 	sounds = default.node_sound_wood_defaults(),
 })

@@ -49,7 +49,7 @@ minetest.register_node("darkage:cobble_with_plaster", {
 
 minetest.register_node("darkage:desert_stone_with_iron", {
 	description = "Desert Iron Ore",
-	tiles = {"default_desert_stone.png^darkage_mineral_iron.png"},
+	tiles = {"default_desert_stone.png^default_mineral_iron.png"},
 	is_ground_content = true,
 	groups = {cracky=3},
 	drop = 'default:iron_lump',

@@ -233,3 +233,114 @@ minetest.register_node("darkage:marble_tile", {
 	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults()
 })
+
+--[[
+	Tuff
+]]
+minetest.register_node("darkage:tuff", {
+	description = "Tuff",
+	tiles = {"darkage_tuff.png"},
+	is_ground_content = true,
+	legacy_mineral = true,
+	groups = {cracky = 3, stone = 1},
+	drop = {
+		max_items = 1,
+		items = {
+			{
+				-- player get tuff node if he is lucky :)
+				items = {'darkage:tuff'},
+				rarity = 3,
+			},
+			{
+				-- player will get rubble with 2/3 chance
+				items = {'darkage:tuff_rubble'},
+			}
+
+		}
+	},
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node("darkage:tuff_bricks", {
+	description = "Tuff Bricks",
+	tiles = {"darkage_tuff_bricks.png"},
+	is_ground_content = false,
+	groups = {cracky=2},
+	sounds = default.node_sound_stone_defaults()
+})
+
+-- abm to turn Tuff bricks to old Tuff bricks if water is nearby
+minetest.register_abm({
+	nodenames = {"darkage:tuff_bricks"},
+	neighbors = {"group:water"},
+	interval = 16,
+	chance = 200,
+	catch_up = false,
+	action = function(pos, node)
+		minetest.set_node(pos, {name = "darkage:old_tuff_bricks"})
+	end
+})
+
+minetest.register_node("darkage:tuff_rubble", {
+	description = "Tuff Rubble",
+	tiles = {"darkage_tuff_rubble.png"},
+	groups = {crumbly = 2, falling_node = 1},
+	sounds = default.node_sound_gravel_defaults(),
+})
+--[[
+	Rhyolitic Tuff
+]]
+minetest.register_node("darkage:rhyolitic_tuff", {
+	description = "Rhyolitic Tuff",
+	tiles = {"darkage_rhyolitic_tuff.png"},
+	is_ground_content = true,
+	legacy_mineral = true,
+	groups = {cracky = 3, stone = 1},
+	drop = {
+		max_items = 1,
+		items = {
+			{
+				-- player get tuff node if he is lucky :)
+				items = {'darkage:rhyolitic_tuff'},
+				rarity = 3,
+			},
+			{
+				-- player will get rubble with 2/3 chance
+				items = {'darkage:rhyolitic_tuff_rubble'},
+			}
+
+		}
+	},
+	sounds = default.node_sound_stone_defaults()
+})
+
+
+
+minetest.register_node("darkage:rhyolitic_tuff_bricks", {
+	description = "Rhyolitic Tuff Bricks",
+	tiles = {"darkage_rhyolitic_tuff_bricks.png"},
+	is_ground_content = false,
+	groups = {cracky=2},
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node("darkage:old_tuff_bricks", {
+	description = "Old Tuff Bricks",
+	tiles = {"darkage_old_tuff_bricks.png"},
+	is_ground_content = false,
+	groups = {cracky=3},
+	sounds = default.node_sound_stone_defaults()
+})
+
+
+
+
+
+minetest.register_node("darkage:rhyolitic_tuff_rubble", {
+	description = "Rhyolitic Tuff Rubble",
+	tiles = {"darkage_rhyolitic_tuff_rubble.png"},
+	groups = {crumbly = 2, falling_node = 1},
+	sounds = default.node_sound_gravel_defaults(),
+})
+
+

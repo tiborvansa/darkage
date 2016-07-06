@@ -157,6 +157,10 @@ local function generate_claylike(data, varea, name, minp, maxp, seed, chance, mi
 	end
 end
 
+local mgparams = minetest.get_mapgen_params()
+local seed = mgparams.seed
+
+
 -- Generate desert stone with iron in derset.
 minetest.register_ore({
 	ore_type       = "scatter",
@@ -183,6 +187,44 @@ minetest.register_ore({
 		offset = 0.35,
 		scale = 0.2,
 		spread = {x = 30, y = 30, z = 30},
+		octaves = 1,
+		persistence = 0.6
+	},
+})
+
+minetest.register_ore({
+	ore_type        	= "sheet",
+	ore             	= "darkage:tuff",
+	wherein         	= {"default:stone", "default:dirt", "default:gravel", "default:stone_with_coal"},
+	column_height_max = 20,
+	column_height_min = 15,
+	y_min            = -200,
+	y_max            = 200,
+	noise_threshold = 0.5,
+	noise_params     = {
+		offset = 0.35,
+		scale = 0.19,
+		seed = seed+12,
+		spread = {x = 45, y = 45, z = 45},
+		octaves = 1,
+		persistence = 0.6
+	},
+})
+
+minetest.register_ore({
+	ore_type        	= "sheet",
+	ore             	= "darkage:rhyolitic_tuff",
+	wherein         	= {"default:stone", "default:dirt", "default:gravel", "default:stone_with_coal"},
+	column_height_max = 20,
+	column_height_min = 15,
+	y_min            = -2000,
+	y_max            = 200,
+	noise_threshold = 0.53,
+	noise_params     = {
+		offset = 0.35,
+		scale = 0.2,
+		seed = seed+13,
+		spread = {x = 100, y = 100, z = 100},
 		octaves = 1,
 		persistence = 0.6
 	},

@@ -22,6 +22,11 @@ create_stair("darkage:basalt_cobble")
 create_stair("darkage:shale")
 create_stair("darkage:ors")
 create_stair("darkage:ors_cobble")
+create_stair("darkage:tuff_bricks")
+create_stair("darkage:old_tuff_bricks")
+create_stair("darkage:rhyolitic_tuff_bricks")
+create_stair("darkage:tuff")
+create_stair("darkage:rhyolitic_tuff")
 
 
 -- Straw

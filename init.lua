@@ -228,3 +228,54 @@ minetest.register_craft({
 	}
 })
 
+-- Tuff
+minetest.register_craft({
+	output = "darkage:tuff 2",
+	recipe = {
+		{"darkage:gneiss", "default:stone"},
+		{"default:stone", "darkage:gneiss"},
+	}
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "darkage:tuff",
+	recipe = "darkage:tuff_rubble",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "darkage:tuff",
+	recipe = "darkage:old_tuff_bricks",
+})
+
+minetest.register_craft({
+	output = "darkage:tuff_bricks",
+	recipe = {
+		{"darkage:tuff", "darkage:tuff"},
+		{"darkage:tuff", "darkage:tuff"},
+	}
+})
+
+-- Rhyolitic Tuff
+minetest.register_craft({
+	output = "darkage:rhyolitic_tuff 2",
+	recipe = {
+		{"darkage:gneiss", "default:desert_stone"},
+		{"default:desert_stone", "darkage:gneiss"},
+	}
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "darkage:rhyolitic_tuff",
+	recipe = "darkage:rhyolitic_tuff_rubble",
+})
+
+minetest.register_craft({
+	output = "darkage:rhyolitic_tuff_bricks",
+	recipe = {
+		{"darkage:rhyolitic_tuff", "darkage:rhyolitic_tuff"},
+		{"darkage:rhyolitic_tuff", "darkage:rhyolitic_tuff"},
+	}
+})

@@ -1,8 +1,10 @@
-#DarkAge MOD for MINETEST
+# DarkAge Mod for Minetest
 Original mod by Master Gollum 
-Modified by addi and CraigyDavi
+Modified by addi. 
 
-##Introduction:
+Contains code from CragiDavi and HybridDog
+
+## Introduction:
   This mod adds a few new blocks that allows to create new buildings in a
   pre industrial landscape. Of course, feel free to use them in any other 
   construction :P
@@ -24,7 +26,7 @@ Modified by addi and CraigyDavi
 
   
 
-##Release Notes
+## Release Notes
 Version 1.2
 
 * corrected Sounds of Stairs
@@ -85,7 +87,7 @@ Version 0.1
 PS: This document has been structured as the README.txt of PilzAdam in 
     his Bed MOD.
 
-###How to install:
+### How to install:
   Unzip the archive an place it in minetest-base-directory/mods/
   if you have a windows client or a linux run-in-place client. If you 
   have a linux system-wide installation place it in 
@@ -94,19 +96,6 @@ PS: This document has been structured as the README.txt of PilzAdam in
   worldmods/ in your worlddirectory. Remember to activate it for your world by pressing the 'configure' button and doubleclick darkage in the right list.
   For further information or help see:
    http://wiki.minetest.net/Installing_Mods
-
-###Tuning:
-  Comments the following lines to remove what you don't like:
-  (To comment them just add -- at the beginning of their lines)
-
-  Stone Layers
-    dofile(minetest.get_modpath("darkage").."/mapgen.lua")
-    The stones will not spawn in the map.
-  
-  Furniture Nodes
-    dofile(minetest.get_modpath("darkage").."/furniture.lua")
-    Only pure stones will be provided.
-
 
 ## BUILDING NODES
 

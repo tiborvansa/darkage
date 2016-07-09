@@ -1,5 +1,7 @@
 minetest.log("action"," ---- Dark Age Version 1.3 is Loading! ---- ")
 
+darkage = {}; -- Create darkage namespace
+
 local MODPATH = minetest.get_modpath("darkage")
 
 dofile(MODPATH.."/nodes.lua")
@@ -9,11 +11,8 @@ dofile(MODPATH.."/furniture.lua")
 dofile(MODPATH.."/aliases.lua")
 dofile(MODPATH.."/walls.lua")
 
-if minetest.get_modpath("moreblocks") then
-	dofile(MODPATH.."/stairsplus.lua")--only if moreblocks installed
-else
-	dofile(MODPATH.."/stairs.lua")
-end
+dofile(MODPATH.."/stairs_functions.lua")
+dofile(MODPATH.."/stairs.lua")
 
 
 ---------------

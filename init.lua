@@ -2,6 +2,10 @@ minetest.log("action"," ---- Dark Age Version 1.3 is Loading! ---- ")
 
 darkage = {}; -- Create darkage namespace
 
+darkage.formbg = (default.gui_bg or "")..
+	(default.gui_bg_img or "")..
+	(default.gui_slots or "")
+
 local MODPATH = minetest.get_modpath("darkage")
 
 dofile(MODPATH.."/nodes.lua")

@@ -18,6 +18,16 @@ minetest.register_node("darkage:chain", {
 	groups = {snappy=1,cracky=2,oddly_breakable_by_hand=2},
 	legacy_wallmounted = true
 })
+local box_formspec = [[
+	size[8,9]
+	list[context;main;0,0.3;8,4;]
+	list[current_player;main;0,4.85;8,1;]
+	list[current_player;main;0,6.08;8,3;8]
+	listring[context;main]
+	listring[current_player;main]
+]].. darkage.formbg
+
+
 
 minetest.register_node("darkage:box", {
 	description = "Box",
@@ -26,11 +36,7 @@ minetest.register_node("darkage:box", {
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec", [[
-			size[8,8]
-			list[context;main;0,0;8,3;]
-			list[current_player;main;0,4;8,4;]
-		]])
+		meta:set_string("formspec", box_formspec )
 		meta:set_string("infotext", "Box")
 		local inv = meta:get_inventory()
 		inv:set_size("main", 16)
@@ -54,6 +60,18 @@ minetest.register_node("darkage:box", {
 	end,
 })
 
+local shelves_formspec = [[
+	size[8,9]
+	list[context;up;0,0;8,2;]
+	list[context;down;0,2.3;8,2;]
+
+	list[current_player;main;0,4.85;8,1;]
+	list[current_player;main;0,6.08;8,3;8]
+	listring[context;up]
+	listring[context;down]
+	listring[current_player;main]
+]].. darkage.formbg
+
 minetest.register_node("darkage:wood_shelves", {
 	description = "Wooden Shelves",
 	tiles = { "darkage_shelves.png","darkage_shelves.png","darkage_shelves.png",
@@ -63,13 +81,7 @@ minetest.register_node("darkage:wood_shelves", {
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec",[[
-			size[8,10]
-			list[context;up;0,0;8,3;]
-			list[context;down;0,3;8,3;]
-
-			list[current_player;main;0,6;8,4;]
-		]])
+		meta:set_string("formspec", shelves_formspec)
 		meta:set_string("infotext", "Wooden Shelves")
 		local inv = meta:get_inventory()
 		inv:set_size("up", 16)

@@ -130,9 +130,9 @@ minetest.register_node("darkage:ors", {
 	sounds = default.node_sound_stone_defaults()
 })
 
-minetest.register_node("darkage:ors_cobble", {
-	description = "Old Red Sandstone Cobble",
-	tiles = {"darkage_ors_cobble.png"},
+minetest.register_node("darkage:ors_brick", {
+	description = "Old Red Sandstone Brick",
+	tiles = {"darkage_ors_brick.png"},
 	is_ground_content = false,
 	groups = {crumbly=2,cracky=2},
 	sounds = default.node_sound_stone_defaults()

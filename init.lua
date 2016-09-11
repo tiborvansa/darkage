@@ -81,6 +81,22 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "darkage:chalked_bricks_with_plaster 2",
+	recipe = {
+		{"darkage:chalked_bricks", "darkage:chalk_powder"},
+		{"darkage:chalked_bricks", "darkage:chalk_powder"},
+	}
+})
+
+minetest.register_craft({
+	output = "darkage:chalked_bricks_with_plaster 2",
+	recipe = {
+		{"darkage:chalk_powder", "darkage:chalked_bricks"},
+		{"darkage:chalk_powder", "darkage:chalked_bricks"},
+	}
+})
+
+minetest.register_craft({
 	output = "darkage:darkdirt 4",
 	recipe = {
 		{"default:dirt",	"default:dirt"},

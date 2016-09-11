@@ -2,6 +2,7 @@
 -- Registration of Stairs (Alphabetical order)
 darkage.register_stairs("darkage:basalt")
 darkage.register_stairs("darkage:basalt_cobble")
+darkage.register_stairs("darkage:chalked_bricks")
 darkage.register_stairs("darkage:gneiss")
 darkage.register_stairs("darkage:gneiss_cobble")
 darkage.register_stairs("darkage:marble")

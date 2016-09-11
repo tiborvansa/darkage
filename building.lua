@@ -17,7 +17,7 @@ function darkage.register_reinforce(name, craftItem, nodedef)
 	assert(type(nodedef.tiles)=="table","ERRROR: nodedef.tiles have to be a table")
 	assert(nodedef.tiles[1], "ERROR: "..dump(nodedef.tiles).." requires at least 1 entry")
 	local modname = minetest.get_current_modname();
-	local tname = name:lower(); -- Technical name
+	local tname = string.gsub(name:lower()," ", "_"); -- Technical name
 
 -- Reinforced X
 	local reinforced = table.copy(nodedef);
@@ -154,6 +154,12 @@ darkage.register_reinforce("Wood", "default:wood", {
 	tiles = {"default_wood.png"},
 	groups = {snappy=2, choppy=3, flammable=3},
 	sounds = default.node_sound_wood_defaults()
+})
+
+darkage.register_reinforce("Chalked Bricks", "darkage:chalked_bricks", {
+	tiles = {"darkage_chalked_bricks.png"},
+	groups = {cracky = 2, stone = 1},
+	sounds = default.node_sound_stone_defaults()
 })
 
 minetest.register_node("darkage:glass", {

@@ -64,7 +64,9 @@ local function register_moreblocks_alias(origin, new)
 end
 
 -- Ors Brick
-minetest.register_alias(  "darkage:ors_cobble", "darkage:ors_brick")
+minetest.register_alias("darkage:ors_cobble", "darkage:ors_brick")
+minetest.register_alias("stairs:slab_ors_cobble", "stairs:slab_ors_brick")
+minetest.register_alias("stairs:stair_ors_cobble", "stairs:stair_ors_brick")
 register_moreblocks_alias("darkage:ors_cobble", "darkage:ors_brick")
 
 -- Slate Tile

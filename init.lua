@@ -205,7 +205,7 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "cooking",
 	output = "darkage:ors",
-	recipe = "darkage:ors_cobble",
+	recipe = "darkage:ors_brick",
 })
 
 minetest.register_craft({
@@ -235,7 +235,7 @@ minetest.register_craft({
 -- Desert
 minetest.register_craft({
 	type = "cooking",
-	output = "darkage:ors_cobble",
+	output = "darkage:ors_brick",
 	recipe = "default:desert_stone",
 })
 

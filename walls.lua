@@ -41,7 +41,7 @@ local register_wall = function(base_node)
 end
 
 register_wall("darkage:basalt_cobble")
-register_wall("darkage:ors_cobble")
+register_wall("darkage:ors_brick")
 register_wall("darkage:stone_brick")
 register_wall("darkage:slate_cobble")
 register_wall("darkage:tuff_bricks")

@@ -102,13 +102,8 @@ end
 local function generate_claylike(data, varea, name, minp, maxp, seed, chance, minh, maxh, dirt)
 	if maxp.y >= maxh+1 and minp.y <= minh-1 then
 		local c_ore = minetest.get_content_id(name)
-		local c_sand = minetest.get_content_id("default:sand")
-		local c_dirt = minetest.get_content_id("default:dirt")
-		local c_lawn = minetest.get_content_id("default:dirt_with_grass")
-		local c_water = minetest.get_content_id("default:water_source")
-		local c_air = minetest.get_content_id("air")
-
 		local pr = PseudoRandom(seed)
+
 		local divlen = 4
 		local divs = (maxp.x-minp.x)/divlen+1;
 		for yy=minh,maxh do
@@ -230,29 +225,50 @@ minetest.register_ore({
 	},
 })
 
+--old red sandstone
+minetest.register_ore({
+	ore_type        	= "sheet",
+	ore             	= "darkage:ors",
+	wherein         	= {"default:stone", "default:dirt", "default:gravel", "default:stone_with_coal"},
+	column_height_max = 8,
+	column_height_min = 6,
+	y_min            = -200,
+	y_max            = 500,
+	noise_threshold = 0.49,
+	noise_params     = {
+		offset = 0.28,
+		scale = 0.3,
+		seed = seed+4,
+		spread = {x = 10, y = 10, z = 10},
+		octaves = 1,
+		persistence = 0.6
+	},
+})
+
+
+local c_air     = minetest.CONTENT_AIR
+local c_ignore  = minetest.CONTENT_IGNORE
+
+local c_stone   = minetest.get_content_id("default:stone")
+local c_water	= minetest.get_content_id("default:water_source")
+local c_sand 	= minetest.get_content_id("default:sand")
+local c_dirt 	= minetest.get_content_id("default:dirt")
+local c_lawn 	= minetest.get_content_id("default:dirt_with_grass")
 -- Generate strati
+local dbuf --for mapgen
 local function generate_strati(minp, maxp, seed)
 	
 	local t1 = os.clock()
 
 	local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
 	local area = VoxelArea:new({MinEdge = emin, MaxEdge = emax})
-	local data = vm:get_data()
-
-	local c_air = minetest.get_content_id("air")
-	local c_stone = minetest.get_content_id("default:stone")
-	local c_water = minetest.get_content_id("default:water_source")
+	local data = vm:get_data(dbuf)
 
 
 	generate_claylike(data, area, "darkage:mud", minp, maxp, seed+1, 4, 0, 2, 0)
 	generate_claylike(data, area, "darkage:silt", minp, maxp, seed+2, 4, -1, 1, 1)
 
 	-- TODO: Maybe realize the following stuff with register ore. somehow.
-	generate_stratus(data, area, "darkage:ors", 
-					c_stone,
-					{c_stone, c_air, c_water},
-					minp, maxp, seed+4, 4, 25, 7, 50, -200,  500)
-
 	generate_stratus(data, area, "darkage:shale",
 					c_stone, 
 					{c_stone, c_air},

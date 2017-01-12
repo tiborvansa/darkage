@@ -1,3 +1,14 @@
+
+-- Some local constants to use for mapgen
+local c_air     = minetest.CONTENT_AIR
+local c_ignore  = minetest.CONTENT_IGNORE
+
+local c_stone   = minetest.get_content_id("default:stone")
+local c_water	= minetest.get_content_id("default:water_source")
+local c_sand 	= minetest.get_content_id("default:sand")
+local c_dirt 	= minetest.get_content_id("default:dirt")
+local c_lawn 	= minetest.get_content_id("default:dirt_with_grass")
+
 --Makes a stratus of rocks
 --name of the rock to generate
 --c_wherein id of node to replace, for example minetest.get_content_id("default:stone")
@@ -246,14 +257,6 @@ minetest.register_ore({
 })
 
 
-local c_air     = minetest.CONTENT_AIR
-local c_ignore  = minetest.CONTENT_IGNORE
-
-local c_stone   = minetest.get_content_id("default:stone")
-local c_water	= minetest.get_content_id("default:water_source")
-local c_sand 	= minetest.get_content_id("default:sand")
-local c_dirt 	= minetest.get_content_id("default:dirt")
-local c_lawn 	= minetest.get_content_id("default:dirt_with_grass")
 -- Generate strati
 local dbuf --for mapgen
 local function generate_strati(minp, maxp, seed)

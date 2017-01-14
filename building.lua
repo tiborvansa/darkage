@@ -16,6 +16,14 @@
 function darkage.register_reinforce(name, craftItem, nodedef)
 	assert(type(nodedef.tiles)=="table","ERRROR: nodedef.tiles have to be a table")
 	assert(nodedef.tiles[1], "ERROR: "..dump(nodedef.tiles).." requires at least 1 entry")
+
+	if nodedef.groups then
+		nodedef.groups["not_cuttable"] = 1;
+	else 
+		nodedef.groups = {};
+		nodedef.groups["not_cuttable"] = 1;
+	end
+
 	local modname = minetest.get_current_modname();
 	local tname = string.gsub(name:lower()," ", "_"); -- Technical name
 
@@ -169,7 +177,7 @@ minetest.register_node("darkage:glass", {
 	use_texture_alpha=true,
 	paramtype = "light",
 	sunlight_propagates = true,
-	groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
+	groups = {cracky = 3, oddly_breakable_by_hand = 3, not_cuttable=1},
 	sounds = default.node_sound_glass_defaults(),
 })
 
@@ -181,7 +189,7 @@ minetest.register_node("darkage:glow_glass", {
 	paramtype = "light",
 	sunlight_propagates = true,
 	light_source = default.LIGHT_MAX-1,
-	groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
+	groups = {cracky = 3, oddly_breakable_by_hand = 3, not_cuttable=1},
 	sounds = default.node_sound_glass_defaults(),
 })
 

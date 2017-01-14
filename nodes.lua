@@ -32,7 +32,7 @@ minetest.register_node("darkage:chalk", {
 	tiles = {"darkage_chalk.png"},
 	is_ground_content = true,
 	drop = 'darkage:chalk_powder 2',
-	groups = {crumbly=2,cracky=2},
+	groups = {crumbly=2, cracky=2, not_cuttable=1},
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -44,7 +44,7 @@ minetest.register_node("darkage:cobble_with_plaster", {
 	is_ground_content = false,
 	paramtype2 = "facedir",
 	drop = 'default:cobble',
-	groups = {cracky=3},
+	groups = {cracky=3, not_cuttable=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -56,7 +56,7 @@ minetest.register_node("darkage:chalked_bricks_with_plaster", {
 	is_ground_content = false,
 	paramtype2 = "facedir",
 	drop = 'default:cobble',
-	groups = {cracky=3},
+	groups = {cracky=3, not_cuttable=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -75,7 +75,7 @@ minetest.register_node("darkage:desert_stone_with_iron", {
 	description = "Desert Iron Ore",
 	tiles = {"default_desert_stone.png^default_mineral_iron.png"},
 	is_ground_content = true,
-	groups = {cracky=3},
+	groups = {cracky=3, not_cuttable=1},
 	drop = 'default:iron_lump',
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -84,7 +84,7 @@ minetest.register_node("darkage:darkdirt", {
 	description = "Dark Dirt",
 	tiles = {"darkage_darkdirt.png"},
 	is_ground_content = false,
-	groups = {crumbly=2},
+	groups = {crumbly=2, not_cuttable=1},
 	sounds = default.node_sound_dirt_defaults(),
 })
 

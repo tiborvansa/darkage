@@ -15,9 +15,11 @@ minetest.register_node("darkage:chain", {
 		--wall_bottom = = <default>
 		--wall_side = = <default>
 	},
-	groups = {snappy=1,cracky=2,oddly_breakable_by_hand=2},
+	groups = {snappy=1, cracky=2, oddly_breakable_by_hand=2, not_cuttable=1},
 	legacy_wallmounted = true
 })
+
+
 local box_formspec = [[
 	size[8,9]
 	list[context;main;0,0.3;8,4;]
@@ -27,12 +29,10 @@ local box_formspec = [[
 	listring[current_player;main]
 ]].. darkage.formbg
 
-
-
 minetest.register_node("darkage:box", {
 	description = "Box",
 	tiles = { "darkage_box_top.png","darkage_box_top.png","darkage_box.png"},
-	groups = { snappy = 3 },
+	groups = { snappy = 3, not_cuttable=1 },
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -77,7 +77,7 @@ minetest.register_node("darkage:wood_shelves", {
 	tiles = { "darkage_shelves.png","darkage_shelves.png","darkage_shelves.png",
 			  "darkage_shelves.png","darkage_shelves.png","darkage_shelves_front.png"},
 	paramtype2 = "facedir",
-	groups = { snappy = 3 },
+	groups = { snappy = 3, not_cuttable=1 },
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -123,7 +123,7 @@ minetest.register_node("darkage:iron_bars", {
 	is_ground_content = false,
 	paramtype = "light",
 	sunlight_propagates = true,
-	groups = {cracky=3},
+	groups = {cracky=3 , not_cuttable=1},
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -133,7 +133,7 @@ minetest.register_node("darkage:lamp", {
 	paramtype = "light",
 	sunlight_propagates = true,
 	light_source = default.LIGHT_MAX-1,
-	groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3,flammable=1},
+	groups = {snappy=2, cracky=3, oddly_breakable_by_hand=3, flammable=1 , not_cuttable=1},
 	sounds = default.node_sound_glass_defaults(),
 })
 
@@ -146,7 +146,7 @@ minetest.register_node("darkage:iron_grille", {
 	is_ground_content = false,
 	paramtype = "light",
 	sunlight_propagates = true,
-	groups = {cracky=3},
+	groups = {cracky=3 , not_cuttable=1},
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -159,7 +159,7 @@ minetest.register_node("darkage:wood_bars", {
 	is_ground_content = false,
 	paramtype = "light",
 	sunlight_propagates = true,
-	groups = {snappy=1,choppy=2},
+	groups = {snappy=1, choppy=2, not_cuttable=1},
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -172,7 +172,7 @@ minetest.register_node("darkage:wood_grille", {
 	is_ground_content = false,
 	paramtype = "light",
 	sunlight_propagates = true,
-	groups = {snappy=1,choppy=2},
+	groups = {snappy=1, choppy=2, not_cuttable=1},
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -185,7 +185,7 @@ minetest.register_node("darkage:wood_frame", {
 	is_ground_content = false,
 	paramtype = "light",
 	sunlight_propagates = true,
-	groups = {snappy=1,choppy=2},
+	groups = {snappy=1, choppy=2, not_cuttable=1},
 	sounds = default.node_sound_stone_defaults()
 })
 

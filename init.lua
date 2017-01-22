@@ -55,12 +55,37 @@ minetest.register_craft({
 	}
 })
 
+--[[
+	Basalt
+]]
+minetest.register_craft({
+	type = "cooking",
+	output = "darkage:basalt",
+	recipe = "darkage:basalt_rubble",
+})
 
 minetest.register_craft({
-	output = "darkage:basalt_cobble 4",
+	output = "darkage:basalt_rubble 4",
 	recipe = {
 		{"default:cobble",		"default:cobble"},
 		{"default:coal_lump",	"default:coal_lump"},
+	}
+})
+
+minetest.register_craft({
+	output = "darkage:basalt_brick 4",
+	recipe = {
+		{"darkage:basalt", "darkage:basalt"},
+		{"darkage:basalt", "darkage:basalt"},
+	}
+})
+
+minetest.register_craft({
+	output = "darkage:basalt_block 9",
+	recipe = {
+		{"darkage:basalt", "darkage:basalt", "darkage:basalt"},
+		{"darkage:basalt", "darkage:basalt", "darkage:basalt"},
+		{"darkage:basalt", "darkage:basalt", "darkage:basalt"},
 	}
 })
 
@@ -104,6 +129,38 @@ minetest.register_craft({
 	}
 })
 
+--[[
+	Gneiss
+]]
+minetest.register_craft({
+	type = "cooking",
+	output = "darkage:gneiss",
+	recipe = "darkage:schist",
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "darkage:gneiss",
+	recipe = "darkage:gneiss_rubble",
+})
+
+minetest.register_craft({
+	output = "darkage:gneiss_brick 4",
+	recipe = {
+		{"darkage:gneiss", "darkage:gneiss"},
+		{"darkage:gneiss", "darkage:gneiss"},
+	}
+})
+
+minetest.register_craft({
+	output = "darkage:gneiss_block 9",
+	recipe = {
+		{"darkage:gneiss", "darkage:gneiss", "darkage:gneiss"},
+		{"darkage:gneiss", "darkage:gneiss", "darkage:gneiss"},
+		{"darkage:gneiss", "darkage:gneiss", "darkage:gneiss"},
+	}
+})
+
 minetest.register_craft({
 	output = "darkage:mud 3",
 	recipe = {
@@ -121,10 +178,44 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "darkage:marble_tile 2",
+	recipe = {
+		{"darkage:marble", "darkage:marble"},
+		{"darkage:marble", "darkage:marble"},
+	}
+})
+
+--[[
+	Old Red Sandstone
+]]
+
+minetest.register_craft({
+	type = "cooking",
+	output = "darkage:ors",
+	recipe = "darkage:ors_rubble",
+})
+
+minetest.register_craft({
 	output = "darkage:ors 4",
 	recipe = {
 		{"default:sandstone", "default:sandstone"},
 		{"default:iron_lump", "default:sandstone"},
+	}
+})
+minetest.register_craft({
+	output = "darkage:ors_brick 4",
+	recipe = {
+		{"darkage:ors", "darkage:ors"},
+		{"darkage:ors", "darkage:ors"},
+	}
+})
+
+minetest.register_craft({
+	output = "darkage:ors_block 9",
+	recipe = {
+		{"darkage:ors", "darkage:ors", "darkage:ors"},
+		{"darkage:ors", "darkage:ors", "darkage:ors"},
+		{"darkage:ors", "darkage:ors", "darkage:ors"},
 	}
 })
 
@@ -144,11 +235,37 @@ minetest.register_craft({
 	}
 })
 
+--[[
+	Slate
+]]
+minetest.register_craft({
+	type = "cooking",
+	output = "darkage:slate",
+	recipe = "darkage:slate_rubble",
+})
+
+minetest.register_craft({
+	output = "darkage:slate_brick 4",
+	recipe = {
+		{"darkage:slate", "darkage:slate"},
+		{"darkage:slate", "darkage:slate"},
+	}
+})
+
+minetest.register_craft({
+	output = "darkage:slate_block 9",
+	recipe = {
+		{"darkage:slate", "darkage:slate", "darkage:slate"},
+		{"darkage:slate", "darkage:slate", "darkage:slate"},
+		{"darkage:slate", "darkage:slate", "darkage:slate"},
+	}
+})
+
 minetest.register_craft({
 	output = "darkage:slate_tile 2",
 	recipe = {
-		{"darkage:slate_cobble", "darkage:slate_cobble"},
-		{"darkage:slate_cobble", "darkage:slate_cobble"},
+		{"darkage:slate_brick", "darkage:slate_brick"},
+		{"darkage:slate_brick", "darkage:slate_brick"},
 	}
 })
 
@@ -176,34 +293,12 @@ minetest.register_craft({
 })
 
 -- Cookings
-minetest.register_craft({
-	type = "cooking",
-	output = "darkage:basalt",
-	recipe = "darkage:basalt_cobble",
-})
+
 
 minetest.register_craft({
 	type = "cooking",
 	output = "darkage:dry_leaves",
 	recipe = "default:leaves",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "darkage:gneiss",
-	recipe = "darkage:schist",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "darkage:gneiss",
-	recipe = "darkage:gneiss_cobble",
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "darkage:ors",
-	recipe = "darkage:ors_brick",
 })
 
 minetest.register_craft({
@@ -227,7 +322,7 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "cooking",
 	output = "darkage:slate",
-	recipe = "darkage:slate_cobble",
+	recipe = "darkage:slate_rubble",
 })
 
 -- Desert

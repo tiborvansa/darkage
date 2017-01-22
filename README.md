@@ -84,8 +84,6 @@ Version 0.1
 
 * 6 Nodes
 
-PS: This document has been structured as the README.txt of PilzAdam in 
-    his Bed MOD.
 
 ### How to install:
   Unzip the archive an place it in minetest-base-directory/mods/
@@ -113,10 +111,10 @@ invented. I have to improve this texture, it is ugly :P
 A darken version of the default Stone
   
      COOKING
-     [Basalt Cobble]
+     [Basalt Rubble]
 
 
-### Basalt Cobble:
+### Basalt Rubble:
 A darken version of the default Cobble.
   
      CRAFT -> 4
@@ -179,14 +177,14 @@ Furnace and then put together to create the Straw
 ### Gneiss:
 High grade metamorphic rock formed from Schist, very
 common, and used in construction. It sometimes brakes in
-Gneiss Cobble when being dug.
+Gneiss Rubble when being dug.
 
      COOKING
      [Schist]
 
 
-### Gneiss Cobble:
-Brick version of the gneiss.
+### Gneiss Rubble:
+Cobble version of the gneiss.
   
      From dig gneiss
 
@@ -214,15 +212,15 @@ sandstone with iron that gives it this color.
      [Iron Lump] [Sandstone]
 
      COOKING
-     [Old Red Sandstone Cobble]
+     [Old Red Sandstone Rubble]
 
 
-### Old Red Sandstone Cobble:
+### Old Red Sandstone Rubble:
 Cobbles of Old Red Sandstone.
   
      CRAFT -> 4
-     [Sandstone Cobble] [Sandstone Cobble]
-     [Iron Lump] [Sandstone Cobble]
+     [Sandstone] [Sandstone]
+     [Iron Lump] [Sandstone]
 
 
 ### Reinforced Cobble:
@@ -232,14 +230,6 @@ Brick with crossed wooden.
      [Stick] [] [Stick]
      [] [Cobble] []
      [Stick] [] [Stick]
-
-
-### Sandstone Cobble:
-Brick version of the Sandstone, good for
-buildings with a pale color.
-	 
-     COOKING
-     [Sandstone]
 
 
 ### Schist:
@@ -270,7 +260,7 @@ low-grade regional metamorphism. It is used to build roof.
      [Slate Cobble]
 
  
-### Slate Cobble:
+### Slate Rubble:
 Cobble obtained from Slate
 
      From dig Slate
@@ -283,8 +273,8 @@ slate is easy to find.
 Note: It has stairs and slabs.
 	 
      CRAFT -> 2
-     [Slate Cobble] [Slate Cobble]
-     [Slate Cobble] [Slate Cobble]
+     [Slate Rubble] [Slate Rubble]
+     [Slate Rubble] [Slate Rubble]
 
 
 ### Straw Bale:

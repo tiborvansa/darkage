@@ -1,3 +1,20 @@
+local function get_node_drops(fullRockNode, cobbleRockNode)
+	return {
+		max_items = 1,
+		items = {
+			{
+				-- drop the cobble variant with 1/3 chance
+				items = {cobbleRockNode},
+				rarity = 3,
+			},
+			{
+				-- drop the full node with 2/3 chance
+				items = {fullRockNode},
+			}
+		}
+	}
+end
+
 ----------
 -- Nodes
 ----------
@@ -10,23 +27,45 @@ minetest.register_node("darkage:adobe", {
 	sounds = default.node_sound_sand_defaults(),
 })
 
+--[[
+	Basalt
+]]
 minetest.register_node("darkage:basalt", {
 	description = "Basalt",
 	tiles = {"darkage_basalt.png"},
 	is_ground_content = true,
-	drop = 'darkage:basalt_cobble',
-	groups = {cracky=3},
+	drop = get_node_drops("darkage:basalt","darkage:basalt_rubble"),
+	groups = {cracky = 3, stone = 1},
 	sounds = default.node_sound_stone_defaults()
 })
 
-minetest.register_node("darkage:basalt_cobble", {
-	description = "Basalt Cobble",
-	tiles = {"darkage_basalt_cobble.png"},
-	is_ground_content = true,
-	groups = {cracky=3},
+minetest.register_node("darkage:basalt_rubble", {
+	description = "Basalt Rubble",
+	tiles = {"darkage_basalt_rubble.png"},
+	is_ground_content = false,
+	groups = {cracky = 3, stone = 2},
 	sounds = default.node_sound_stone_defaults()
 })
 
+minetest.register_node("darkage:basalt_brick", {
+	description = "Basalt Brick",
+	tiles = {"darkage_basalt_brick.png"},
+	is_ground_content = false,
+	groups = {cracky = 2, stone = 1},
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node("darkage:basalt_block", {
+	description = "Basalt Block",
+	tiles = {"darkage_basalt_block.png"},
+	is_ground_content = false,
+	groups = {cracky = 2, stone = 1},
+	sounds = default.node_sound_stone_defaults()
+})
+
+--[[
+	Chalk
+]]
 minetest.register_node("darkage:chalk", {
 	description = "Chalk",
 	tiles = {"darkage_chalk.png"},
@@ -97,40 +136,58 @@ minetest.register_node("darkage:dry_leaves", {
 	sounds = default.node_sound_leaves_defaults()
 })
 
+--[[
+	Gneiss
+]]
 minetest.register_node("darkage:gneiss", {
 	description = "Gneiss",
 	tiles = {"darkage_gneiss.png"},
 	is_ground_content = true,
-	groups = {cracky=3},
-	drop = {
-		max_items = 1,
-		items = {
-			{
-				-- player will get cobbles with 1/3 chance
-				items = {'darkage:gneiss_cobble'},
-				rarity = 3,
-			},
-			{
-				items = {'darkage:gneiss'},
-			}
-		}
-	},
+	groups = {cracky = 3, stone = 1},
+	drop = get_node_drops("darkage:gneiss", "darkage:gneiss_rubble"),
 	sounds = default.node_sound_stone_defaults()
 })
 
-minetest.register_node("darkage:gneiss_cobble", {
-	description = "Gneiss Cobble",
-	tiles = {"darkage_gneiss_cobble.png"},
+minetest.register_node("darkage:gneiss_rubble", {
+	description = "Gneiss Rubble",
+	tiles = {"darkage_gneiss_rubble.png"},
 	is_ground_content = false,
-	groups = {cracky=3},
+	groups = {cracky = 3, stone = 2},
 	sounds = default.node_sound_stone_defaults()
 })
 
+minetest.register_node("darkage:gneiss_brick", {
+	description = "Gneiss Brick",
+	tiles = {"darkage_gneiss_brick.png"},
+	is_ground_content = false,
+	groups = {cracky = 2, stone = 1},
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node("darkage:gneiss_block", {
+	description = "Gneiss Block",
+	tiles = {"darkage_gneiss_block.png"},
+	is_ground_content = false,
+	groups = {cracky = 2, stone = 1},
+	sounds = default.node_sound_stone_defaults()
+})
+
+--[[
+	Marble
+]]
 minetest.register_node("darkage:marble", {
 	description = "Marble",
 	tiles = {"darkage_marble.png"},
 	is_ground_content = true,
-	groups = {cracky=3},
+	groups = {cracky = 3, stone = 1},
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node("darkage:marble_tile", {
+	description = "Marble Tile",
+	tiles = {"darkage_marble_tile.png"},
+	is_ground_content = false,
+	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -145,12 +202,23 @@ minetest.register_node("darkage:mud", {
 	}),
 })
 
+--[[
+	Old Red Sandstone
+]]
 minetest.register_node("darkage:ors", {
 	description = "Old Red Sandstone",
 	tiles = {"darkage_ors.png"},
 	is_ground_content = true,
-	drop = "darkage:ors_brick",
-	groups = {crumbly=2,cracky=2},
+	drop = "darkage:ors_rubble",
+	groups = {cracky=2},
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node("darkage:ors_rubble", {
+	description = "Old Red Sandstone Rubble",
+	tiles = {"darkage_ors_rubble.png"},
+	is_ground_content = true,
+	groups = {cracky = 3, crumbly=2, stone = 2},
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -158,7 +226,15 @@ minetest.register_node("darkage:ors_brick", {
 	description = "Old Red Sandstone Brick",
 	tiles = {"darkage_ors_brick.png"},
 	is_ground_content = false,
-	groups = {crumbly=2,cracky=2},
+	groups = {cracky = 3, stone = 2},
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node("darkage:ors_block", {
+	description = "Old Red Sandstone Block",
+	tiles = {"darkage_ors_block.png"},
+	is_ground_content = false,
+	groups = {cracky = 3, stone = 2},
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -197,18 +273,21 @@ minetest.register_node("darkage:silt", {
 	}),
 })
 
+--[[
+	Slate
+]]
 minetest.register_node("darkage:slate", {
 	description = "Slate",
 	tiles = {"darkage_slate.png","darkage_slate.png","darkage_slate_side.png"},
 	is_ground_content = true,
-	drop = 'darkage:slate_cobble',
+	drop = 'darkage:slate_rubble',
 	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults()
 })
 
-minetest.register_node("darkage:slate_cobble", {
-	description = "Slate Cobble",
-	tiles = {"darkage_slate_cobble.png"},
+minetest.register_node("darkage:slate_rubble", {
+	description = "Slate Rubble",
+	tiles = {"darkage_slate_rubble.png"},
 	is_ground_content = false,
 	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults()
@@ -217,6 +296,22 @@ minetest.register_node("darkage:slate_cobble", {
 minetest.register_node("darkage:slate_tile", {
 	description = "Slate Tile",
 	tiles = {"darkage_slate_tile.png"},
+	is_ground_content = false,
+	groups = {cracky=2},
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node("darkage:slate_block", {
+	description = "Slate Block",
+	tiles = {"darkage_slate_block.png"},
+	is_ground_content = false,
+	groups = {cracky=2},
+	sounds = default.node_sound_stone_defaults()
+})
+
+minetest.register_node("darkage:slate_brick", {
+	description = "Slate Brick",
+	tiles = {"darkage_slate_brick.png"},
 	is_ground_content = false,
 	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults()
@@ -240,22 +335,6 @@ minetest.register_node("darkage:straw_bale", {
 	drop = 'farming:straw 4',
 	groups = {snappy=2, flammable=2},
 	sounds = default.node_sound_leaves_defaults(),
-})
-
-minetest.register_node("darkage:marble", {
-	description = "Marble",
-	tiles = {"darkage_marble.png"},
-	is_ground_content = true,
-	groups = {cracky=2},
-	sounds = default.node_sound_stone_defaults()
-})
-
-minetest.register_node("darkage:marble_tile", {
-	description = "Marble Tile",
-	tiles = {"darkage_marble_tile.png"},
-	is_ground_content = false,
-	groups = {cracky=2},
-	sounds = default.node_sound_stone_defaults()
 })
 
 --[[

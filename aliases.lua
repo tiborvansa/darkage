@@ -68,7 +68,30 @@ minetest.register_alias("darkage:ors_cobble", "darkage:ors_brick")
 minetest.register_alias("stairs:slab_ors_cobble", "stairs:slab_ors_brick")
 minetest.register_alias("stairs:stair_ors_cobble", "stairs:stair_ors_brick")
 register_moreblocks_alias("darkage:ors_cobble", "darkage:ors_brick")
+minetest.register_alias("darkage:ors_cobble_wall", "darkage:ors_rubble_wall")
 
 -- Slate Tile
 minetest.register_alias(  "darkage:slate_tale", "darkage:slate_tile")
 register_moreblocks_alias("darkage:slate_tale", "darkage:slate_tile")
+
+
+-- Basalt Brick
+minetest.register_alias("darkage:basalt_cobble", "darkage:basalt_brick")
+minetest.register_alias("stairs:slab_basalt_cobble", "stairs:slab_basalt_brick")
+minetest.register_alias("stairs:stair_basalt_cobble", "stairs:stair_basalt_brick")
+register_moreblocks_alias("darkage:basalt_cobble", "darkage:basalt_brick")
+minetest.register_alias("darkage:basalt_cobble_wall", "darkage:basalt_rubble_wall")
+
+-- Slate Brick
+minetest.register_alias("darkage:slate_cobble", "darkage:slate_brick")
+minetest.register_alias("stairs:slab_slate_cobble", "stairs:slab_slate_brick")
+minetest.register_alias("stairs:stair_slate_cobble", "stairs:stair_slate_brick")
+register_moreblocks_alias("darkage:slate_cobble", "darkage:slate_brick")
+minetest.register_alias("darkage:slate_cobble_wall", "darkage:slate_rubble_wall")
+
+-- Gneiss Brick
+minetest.register_alias("darkage:gneiss_cobble", "darkage:gneiss_brick")
+minetest.register_alias("stairs:slab_gneiss_cobble", "stairs:slab_gneiss_brick")
+minetest.register_alias("stairs:stair_gneiss_cobble", "stairs:stair_gneiss_brick")
+register_moreblocks_alias("darkage:gneis_cobble", "darkage:gneiss_brick")
+minetest.register_alias("darkage:gneiss_cobble_wall", "darkage:gneiss_rubble_wall")

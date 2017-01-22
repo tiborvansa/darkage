@@ -193,14 +193,6 @@ minetest.register_node("darkage:glow_glass", {
 	sounds = default.node_sound_glass_defaults(),
 })
 
-minetest.register_craft({
-	output = "darkage:glow_glass 1",
-	recipe = {
-		{"darkage:glass", "", ""},
-		{"default:torch", "", ""},
-		{"", "", ""},
-	}
-})
 
 minetest.register_craft({
 	output = "darkage:glass 1",
@@ -219,19 +211,10 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "darkage:chalk",
-	recipe = {
-    {"darkage:chalk_powder","darkage:chalk_powder"},
-	{"darkage:chalk_powder","darkage:chalk_powder"},
-	}
-})
-
-minetest.register_craft({
 	output = "darkage:glow_glass 1",
 	recipe = {
-		{"darkage:glass", "", ""},
-		{"default:torch", "", ""},
-		{"", "", ""},
+		{"darkage:glass"},
+		{"default:torch"},
 	}
 })
 

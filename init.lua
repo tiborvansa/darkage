@@ -6,17 +6,18 @@ darkage.formbg = (default.gui_bg or "")..
 	(default.gui_bg_img or "")..
 	(default.gui_slots or "")
 
-local MODPATH = minetest.get_modpath("darkage")
+local MODPATH = minetest.get_modpath("darkage")..DIR_DELIM
 
-dofile(MODPATH.."/nodes.lua")
-dofile(MODPATH.."/mapgen.lua")
-dofile(MODPATH.."/building.lua")
-dofile(MODPATH.."/furniture.lua")
-dofile(MODPATH.."/aliases.lua")
-dofile(MODPATH.."/walls.lua")
+dofile(MODPATH.."nodes.lua")
+dofile(MODPATH.."glass.lua")
+dofile(MODPATH.."mapgen.lua")
+dofile(MODPATH.."building.lua")
+dofile(MODPATH.."furniture.lua")
+dofile(MODPATH.."aliases.lua")
+dofile(MODPATH.."walls.lua")
 
-dofile(MODPATH.."/stairs_functions.lua")
-dofile(MODPATH.."/stairs.lua")
+dofile(MODPATH.."stairs_functions.lua")
+dofile(MODPATH.."stairs.lua")
 
 
 ---------------

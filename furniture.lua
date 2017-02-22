@@ -185,7 +185,7 @@ minetest.register_node("darkage:wood_frame", {
 	is_ground_content = false,
 	paramtype = "light",
 	sunlight_propagates = true,
-	groups = {snappy=1, choppy=2, not_cuttable=1},
+	groups = {snappy=1, choppy=2, oddly_breakable_by_hand = 3, not_cuttable=1},
 	sounds = default.node_sound_stone_defaults()
 })
 

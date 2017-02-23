@@ -178,7 +178,7 @@ minetest.register_node("darkage:wood_grille", {
 
 minetest.register_node("darkage:wood_frame", {
 	description = "Wooden Frame",
-	drawtype = "glasslike",
+	drawtype = "glasslike_framed",
 	tiles = {"darkage_wood_frame.png"},
 	inventory_image = "darkage_wood_frame.png",
 	wield_image = "darkage_wood_frame.png",

@@ -38,6 +38,7 @@ local function register_moreblocks_alias(origin, new)
 	ra(originmod.. ":slab_" ..originnode.."_15",                      newmod..":slab_" ..newnode.."_15")
 	
 	ra(originmod.. ":stair_" ..originnode.."_half",                   newmod..":stair_" ..newnode.."_half")
+	ra(originmod.. ":stair_" ..originnode.."_right_half",             newmod..":stair_" ..newnode.."_right_half")
 	
 	ra(originmod.. ":stair_" ..originnode.."_alt_1",                  newmod..":stair_" ..newnode.."_alt_1")
 	ra(originmod.. ":stair_" ..originnode.."_alt_2",                  newmod..":stair_" ..newnode.."_alt_2")

@@ -271,7 +271,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "darkage:stone_brick 9",
+	output = "darkage:stone_brick",
 	recipe = {
 		{"default:stone_block"},
 	}

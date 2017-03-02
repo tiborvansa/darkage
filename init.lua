@@ -363,7 +363,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "darkage:tuff_bricks",
+	output = "darkage:tuff_bricks 4",
 	recipe = {
 		{"darkage:tuff", "darkage:tuff"},
 		{"darkage:tuff", "darkage:tuff"},
@@ -386,7 +386,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "darkage:rhyolitic_tuff_bricks",
+	output = "darkage:rhyolitic_tuff_bricks 4",
 	recipe = {
 		{"darkage:rhyolitic_tuff", "darkage:rhyolitic_tuff"},
 		{"darkage:rhyolitic_tuff", "darkage:rhyolitic_tuff"},

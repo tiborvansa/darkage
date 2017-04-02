@@ -248,7 +248,7 @@ minetest.register_ore({
 
 
 -- Generate strati
-local dbuf --for mapgen
+local dbuf = {} --for mapgen
 local function generate_strati(minp, maxp, seed)
 
 	local t1 = os.clock()

@@ -334,9 +334,8 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "default:desert_stone 2",
+	output = "default:desert_stone",
 	recipe = {
-		{"default:desert_sand", "default:desert_sand"},
 		{"default:desert_sand", "default:desert_sand"},
 	}
 })

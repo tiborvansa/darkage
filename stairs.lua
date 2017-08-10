@@ -26,5 +26,4 @@ darkage.register_stairs("darkage:stone_brick")
 darkage.register_stairs("darkage:straw_bale")
 darkage.register_stairs("darkage:tuff")
 darkage.register_stairs("darkage:tuff_bricks")
-darkage.register_stairs("farming:straw")
 

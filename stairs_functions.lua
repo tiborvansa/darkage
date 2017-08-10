@@ -7,7 +7,10 @@ if minetest.get_modpath("moreblocks") then
         local mod = "darkage"
         local node = nodeName:split(":")[2]
 
-        stairsplus:register_all(mod, node, nodeName, ndef)
+        local def = table.copy(ndef)
+        def.drop = nil
+
+        stairsplus:register_all(mod, node, nodeName, def)
     end
 elseif minetest.get_modpath("stairs") then
 	function darkage.register_stairs(nodeName)

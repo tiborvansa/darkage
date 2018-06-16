@@ -96,3 +96,6 @@ minetest.register_alias("stairs:slab_gneiss_cobble", "stairs:slab_gneiss_brick")
 minetest.register_alias("stairs:stair_gneiss_cobble", "stairs:stair_gneiss_brick")
 register_moreblocks_alias("darkage:gneis_cobble", "darkage:gneiss_brick")
 minetest.register_alias("darkage:gneiss_cobble_wall", "darkage:gneiss_rubble_wall")
+
+-- Straw
+register_moreblocks_alias("darkage:straw", "moreblocks:straw")

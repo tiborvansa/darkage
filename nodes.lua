@@ -318,7 +318,7 @@ minetest.register_node("darkage:slate_brick", {
 })
 
 -- Removed straw, because its in minetst game. Registering alias for compatibility reasons
-minetest.register_alias("darkage:straw", "farming:straw")
+--minetest.register_alias("darkage:straw", "farming:straw")
 
 minetest.register_node("darkage:stone_brick", {
 	description = "Stone Brick",
